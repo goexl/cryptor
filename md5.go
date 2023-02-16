@@ -5,13 +5,28 @@ import (
 	"encoding/hex"
 )
 
-var _ = Md5
+type _md5 struct {
+	from []byte
+}
 
-// Md5 将字符串加密成Md5字符串
-func Md5(from string) (to string, err error) {
-	alg := md5.New()
-	if _, err = alg.Write([]byte(from)); nil == err {
-		to = hex.EncodeToString(alg.Sum(nil))
+func newMd5(from []byte) *_md5 {
+	return &_md5{
+		from: from,
+	}
+}
+
+func (m *_md5) Hex() (to string) {
+	if bytes := m.Bytes(); nil != bytes {
+		to = hex.EncodeToString(bytes)
+	}
+
+	return
+}
+
+func (m *_md5) Bytes() (to []byte) {
+	hash := md5.New()
+	if _, err := hash.Write(m.from); nil == err {
+		to = hash.Sum(nil)
 	}
 
 	return
