@@ -1,6 +1,7 @@
 package cryptor
 
 import (
+	// nolint: gosec
 	"crypto/md5"
 	"encoding/hex"
 )
@@ -24,6 +25,7 @@ func (m *_md5) Hex() (to string) {
 }
 
 func (m *_md5) Bytes() (to []byte) {
+	// nolint: gosec
 	hash := md5.New()
 	if _, err := hash.Write(m.from); nil == err {
 		to = hash.Sum(nil)
