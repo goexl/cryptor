@@ -2,6 +2,7 @@ package cryptor
 
 import (
 	"crypto/hmac"
+	// nolint: gosec
 	"crypto/md5"
 	"crypto/sha256"
 	"encoding/hex"
