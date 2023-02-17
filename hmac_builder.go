@@ -1,6 +1,7 @@
 package cryptor
 
 import (
+	// nolint: gosec
 	"crypto/md5"
 	"crypto/sha256"
 	"crypto/sha512"
