@@ -2,31 +2,22 @@ package cryptor
 
 import (
 	"crypto/hmac"
-	// nolint: gosec
-	"crypto/md5"
 	"crypto/sha256"
 	"encoding/hex"
-	"hash"
 )
 
 type _hmac[K typ] struct {
-	hash func() hash.Hash
-	key  K
-	sign []byte
+	hashFun hashFun
+	key     K
+	sign    []byte
 }
 
-func newHmac[K typ](key K, sign []byte) *_hmac[K] {
+func newHmac[K typ](hashFun hashFun, key K, sign []byte) *_hmac[K] {
 	return &_hmac[K]{
-		hash: sha256.New,
-		key:  key,
-		sign: sign,
+		hashFun: hashFun,
+		key:     key,
+		sign:    sign,
 	}
-}
-
-func (h *_hmac[K]) Md5() *_hmac[K] {
-	h.hash = md5.New
-
-	return h
 }
 
 func (h *_hmac[K]) String() string {

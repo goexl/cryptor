@@ -10,12 +10,12 @@ func newBuilder[T typ](from T) *builder[T] {
 	}
 }
 
-func (b *builder[T]) Sha256() *_sha256 {
-	return newSha256(b.bytes())
+func (b *builder[T]) Sha() *shaBuilder {
+	return newShaBuilder(b.bytes())
 }
 
-func (b *builder[T]) Hmac(key T) *_hmac[T] {
-	return newHmac[T](key, b.bytes())
+func (b *builder[T]) Hmac(key T) *hmacBuilder[T] {
+	return newHmacBuilder[T](key, b.bytes())
 }
 
 func (b *builder[T]) Md5() *_md5 {
