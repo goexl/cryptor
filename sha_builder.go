@@ -30,6 +30,6 @@ func (sb *shaBuilder) Bit512() *shaBuilder {
 	return sb
 }
 
-func (sb *shaBuilder) Builder() *sha {
+func (sb *shaBuilder) Build() *sha {
 	return newSha(sb.from, sb.length)
 }
