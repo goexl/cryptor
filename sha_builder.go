@@ -12,19 +12,19 @@ func newShaBuilder(from []byte) *shaBuilder {
 	}
 }
 
-func (sb *shaBuilder) For224() *shaBuilder {
+func (sb *shaBuilder) Bit224() *shaBuilder {
 	sb.length = 224
 
 	return sb
 }
 
-func (sb *shaBuilder) For384() *shaBuilder {
+func (sb *shaBuilder) Bit384() *shaBuilder {
 	sb.length = 384
 
 	return sb
 }
 
-func (sb *shaBuilder) For512() *shaBuilder {
+func (sb *shaBuilder) Bit512() *shaBuilder {
 	sb.length = 512
 
 	return sb
