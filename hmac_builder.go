@@ -33,6 +33,12 @@ func (hb *hmacBuilder[K]) Sha512() *hmacBuilder[K] {
 	return hb
 }
 
+func (hb *hmacBuilder[K]) Hash(fun hashFun) *hmacBuilder[K] {
+	hb.hashFun = fun
+
+	return hb
+}
+
 func (hb *hmacBuilder[K]) Build() *_hmac[K] {
 	return newHmac[K](hb.hashFun, hb.key, hb.sign)
 }
